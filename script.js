@@ -14,6 +14,7 @@ function weatherBalloon() {
         .then(function(data) {
             console.log(data);
             drawWeather(data);
+            drawIconWeather(data);
         })
         .catch(function() {
             // catch any errors
@@ -24,11 +25,17 @@ window.onload = function() {
     weatherBalloon( 6167865 );
 }
 
-function drawWeather( d ) {
-    var celcius = Math.round(parseFloat(d.main.temp)-273.15);
-    var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
+function drawWeather(data) {
+    var celcius = Math.round(parseFloat(data.main.temp)-273.15);
+    var fahrenheit = Math.round(((parseFloat(data.main.temp)-273.15)*1.8)+32);
 
-    document.getElementById('descriptionId').innerHTML = d.weather[0].description;
+    document.getElementById('descriptionId').innerHTML = data.weather[0].description;
     document.getElementById('degreeId').innerHTML = celcius + '&deg;';
-    document.getElementById('timezoneId').innerHTML = d.name;
+    document.getElementById('timezoneId').innerHTML = data.name;
+}
+
+function drawIconWeather(data){
+    var icons = new Skycons({"color": "orange"});
+    icons.set("icon", Skycons.RAIN);
+    icons.play();
 }
