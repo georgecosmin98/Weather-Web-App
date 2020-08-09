@@ -39,18 +39,21 @@ function drawWeather(data) {
 }
 
 function drawIconWeather(data) {
-    var icons = new Skycons({"color": "orange"});
     switch (data.weather[0].main) {
         case "Clouds":
+            var icons = new Skycons({"color": "gray"});
             icons.set("icon", Skycons.CLOUDY);
             break;
         case "Clear":
+            var icons = new Skycons({"color": "gold"});
             icons.set("icon", Skycons.CLEAR_DAY);
             break;
         case "Snow":
+            var icons = new Skycons({"color": "snow"});
             icons.set("icon", Skycons.SNOW);
             break;
         case "Rain":
+            var icons = new Skycons({"color": "gray;"});
             icons.set("icon", Skycons.RAIN);
             break;
     }
