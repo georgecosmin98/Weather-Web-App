@@ -33,7 +33,7 @@ function drawWeather(data) {
     var celcius = Math.round(parseFloat(data.main.temp) - 273.15);
     var fahrenheit = Math.round(((parseFloat(data.main.temp) - 273.15) * 1.8) + 32);
 
-    document.getElementById('descriptionId').innerHTML = data.weather[0].description;
+    document.getElementById('descriptionId').innerHTML = data.weather[0].description.toUpperCase();
     document.getElementById('degreeId').innerHTML = celcius + '&deg;';
     document.getElementById('timezoneId').innerHTML = data.name;
 }
